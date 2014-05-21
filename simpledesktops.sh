@@ -1,6 +1,5 @@
 function simpledesks() {
     useragent='Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36' # Mimic Google Chrome 33.0.1750.117 on 64-bit Windows 8.1
- 	print 'hi'
     if [ $# != 1 ]
     then
         echo 'Enter the number of pages you want to scrape as the only argument. Each page has (give or take) 28 images. The total number of pages at this time is 46.'
@@ -21,7 +20,7 @@ function simpledesks() {
         do
             name=$(sed 's/^.*\/[0-9][0-9]\/\(.*\)\/$/\1/' <<< $url)
             echo -n Downloading $name...
-            if [ $(ls -1 | grep ^$name\....) ]  # If we already have the file, no need to re-download
+            if [[ $(ls -1 | grep ^$name\....) ]]  # If we already have the file, no need to re-download
             then
                 :
             else
@@ -41,4 +40,4 @@ function simpledesks() {
     done
 }
 
-simpledesks 1
+simpledesks $1
